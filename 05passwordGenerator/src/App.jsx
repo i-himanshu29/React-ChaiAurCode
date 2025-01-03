@@ -8,30 +8,43 @@ function App() {
   const [charAllowed,setCharAllowed] = useState(false)
   const [password,setPassword] = useState("")
 
-  //useRef hook
+  //useRef hook is the reference hook used for taking the reference for anything
   const passwordRef = useRef(null)
 
+  // Dependencies of useCallback() is used for optimization
+  // This project can be done without callback as well , with the useEffect
   const passwordGenerator = useCallback(()=>{
     let pass = ""
     let str = 
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+
+    // if number are allowed then use number otherwise char use
     if(numberAllowed) str+="0123456789"
     if(charAllowed) str+="!~@#$%^&*?+_-|\/>,<."
 
+    // Generate a random number from satrting to the length of the str
     for(let i=1;i<=length;i++){
       let char = Math.floor(Math.random()*str.length+1)
       pass += str.charAt(char)
     }
     setPassword(pass)
 
-  },[length,numberAllowed,charAllowed,setPassword])
+  },[length,numberAllowed,charAllowed,setPassword])/// Dependencies of useCallback() is used for optimization
 
   const copyPasswordToClipboard = useCallback(()=>{
+
+    // to show the user that it has been copied the text
     passwordRef.current?.select();
+    // It give the range what length of text is selected
     passwordRef.current?.setSelectionRange(0,101);
-    window.navigator.clipboard.writeText(password)
+
+    window.navigator.clipboard.writeText(password) // way to copy the text on clipboard
   },[password])
   
+
+  //useEffect i.e Hook => it includes callback and dependancies
+  // useEffect is call a single time but any changes happening then it run again
+  // dependencies of useEffect is used for , run again if any changes happening
   useEffect(()=>{
     passwordGenerator()
   },[length,numberAllowed,charAllowed,passwordGenerator])
@@ -46,11 +59,15 @@ function App() {
               className='outline-none w-full py-1 px-3'
               placeholder='password'
               readOnly
-              ref={passwordRef}
+              ref={passwordRef} // passing the ref for reference
             />
             <button 
-            onClick = {copyPasswordToClipboard}
-            className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'>copy</button>
+            onClick = {copyPasswordToClipboard} // action after clicking the button through copyPasswordToClipboard
+          
+            className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0
+            // adding hover effect
+             font-bold rounded transition duration-300 hover:bg-blue-400 hover:scale-105
+            '>copy</button>
           </div>
           <div className='flex text-sm gap-x-2'>
             <div className='flex items-center gap-x-1'>
