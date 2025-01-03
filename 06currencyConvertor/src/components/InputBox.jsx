@@ -1,5 +1,5 @@
 import React,{useId} from 'react'
-
+// useId Hook id used for generating unique id's that can be passed to accessibility attributes.
 
 function InputBox({
   label,
@@ -12,23 +12,23 @@ function InputBox({
   currencyDisable = false,
   className = "",
 }) {
- const amountInputId = useId()
+ const amountInputId = useId()  // got a unique value
 
   return (
       <div className={`bg-white p-3 rounded-lg text-sm flex ${className} `}>
           <div className="w-1/2">
-              <label htmlFor={amountInputId} 
+              <label htmlFor={amountInputId}  // htmlfor is used for binding to amountInputId
               className="text-black/40 mb-2 inline-block">
                   {label}
               </label>
               <input
-                  id={amountInputId}
+                  id={amountInputId} // now bind here with amountInputId
                   className="outline-none w-full bg-transparent py-1.5"
                   type="number"
                   placeholder="Amount"
                   disabled={amountDisable}
                   value = {amount}
-                  onChange={(e)=>onAmountChange &&
+                  onChange={(e)=>onAmountChange && 
                   onAmountChange(Number(e.target.value))}
               />
           </div>
@@ -42,7 +42,7 @@ function InputBox({
                   disabled={currencyDisable}
               >
 
-                    {currencyOptions.map((currency)=>(
+                    {currencyOptions.map((currency)=>(// if u apply a map , you should pass a key as well to optimze performance
                       <option key={currency} value={currency}>
                           {currency}
                       </option>
