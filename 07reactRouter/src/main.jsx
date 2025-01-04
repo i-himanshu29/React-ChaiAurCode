@@ -11,7 +11,7 @@ import User from './components/User/User.jsx'
 import { Route } from 'react-router-dom'
 import Github, { githubInfoLoader } from './components/Github/Github.jsx'
 
-//  way-1
+//  way-1 to create router
 
 // const router = createBrowserRouter([
 //   {
@@ -37,19 +37,24 @@ import Github, { githubInfoLoader } from './components/Github/Github.jsx'
 // or 
 
 
-// way2-
+// way2- to create a router
 
 const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<Layout/>}>
+  createRoutesFromElements(// their is createrRoutesFromChild as well but we use createRoutesFromElements
+    <Route path='/' element={<Layout/>}>  // some people says root as well
         <Route path='' element={<Home/>}/>
         <Route path='about' element={<About/>}/>
+        {/* you can also do nexting for about  like that...*/}
+        {/* <Route path='about/hitesh' element={<About/>}>
+            <Route path='Hitesh'/>
+        </Route> */} 
         <Route path='contact' element={<Contact/>}/>
-        <Route path='user/:userid' element={<User/>}/>
+        <Route path='user/:userid' element={<User/>}/>// always use id with the user so that the details are of that person
         {/* <Route path='github' element={<Github/>}/> */}
+
         {/* another way ----- to represent github route */}
         <Route
-        loader={githubInfoLoader} 
+        loader={githubInfoLoader}  // loader use karne se apka data use effect se bhi pahle aana suru ho jata hai cursor github par le jane se hi
         // loader ke andar hi apna pura ka pura api call likh skate hai
         //Here you can also callback your function and perform required action -
         path='github'
