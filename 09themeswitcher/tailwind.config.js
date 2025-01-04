@@ -4,7 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode:"class",
+  darkMode:"class", // actually need to be change tailwind config to toggle 
   theme: {
     extend: {},
   },

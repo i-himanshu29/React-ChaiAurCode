@@ -9,6 +9,7 @@ function App() {
 
   const [themeMode,setThemeMode] = useState("light")
 
+  //Method Name should be same as it passed in the ThemeProvider as the value
   const lightTheme = () =>{
     setThemeMode("light")
   }
@@ -17,8 +18,9 @@ function App() {
     setThemeMode("dark")
   }
 
-  //actual change in theme
-
+  //how actual change in theme
+// useEffect is a React hook that lets you perform side effects in functional components.
+//  It’s commonly used for tasks like fetching data, subscribing to events, or updating the DOM in response to changes.
   useEffect(()=>{
     document.querySelector('html').classList.remove("light","dark")
     document.querySelector('html').classList.add(themeMode)
