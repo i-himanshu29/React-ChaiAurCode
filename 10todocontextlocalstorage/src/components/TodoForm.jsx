@@ -10,6 +10,10 @@ function TodoForm() {
         e.preventDefault()
         if(!todo) return 
 
+        // addTodo({id:Date.now() , todo:todo, completed:false}) if you are using this syntax
+        // then you have to updaate you app.js like that -> setTodos((prev)=>[{...todo},...prev])
+
+        // best way 
         addTodo({todo,completed:false})
         setTodo("")
     }

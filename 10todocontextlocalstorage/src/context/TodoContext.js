@@ -1,6 +1,7 @@
 import {createContext, useContext} from "react"
 
 export const TodoContext = createContext({
+    //properties....
     todos:[
         {
             id:1,
@@ -8,7 +9,11 @@ export const TodoContext = createContext({
             completed:false,
         }
     ],
+    //functionalities......
     addTodo:(todo)=>{},
+    // their method should be defined in app.js , not there.
+    //Context api is not made for the very large project.
+    // Redux or Zustang are used in large project
     updateTodo:(id,todo)=>{},
     deleteTodo:(id)=>{},
     toggleComplete:(id)=>{}
