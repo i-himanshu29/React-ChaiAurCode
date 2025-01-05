@@ -6,11 +6,11 @@ function AddTodo() {
 
   const [input,setInput]=useState('')
   const dispatch = useDispatch()
-
+  //Dispatch reducer ko use kar ke store me value change karta hai
   const addTodoHandler = (e) =>{
     e.preventDefault()
     dispatch(addTodo(input))
-    setInput('')
+    setInput('') // Because we want ki jab form fill ho kar submit ho jaye to input field clean ho jaye that's why we pass empty string
   }
 
   return (
