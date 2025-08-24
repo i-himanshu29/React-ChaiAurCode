@@ -3,7 +3,6 @@
 // // https://open.er-api.com/v6/latest/USD
 // // https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json
 
-
 // function useCurrencyInfo(currency){
 //     const [data,setData] = useState({})
 //     useEffect(()=>{
@@ -19,9 +18,7 @@
 
 // export default useCurrencyInfo;
 
-
 import { useEffect, useState } from "react";
-
 
 // creating a custom hook
 function useCurrencyInfo(currency) {
