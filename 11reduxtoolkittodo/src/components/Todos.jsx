@@ -1,25 +1,25 @@
-import React from 'react'
-import { useSelector,useDispatch} from 'react-redux'
-import { removeTodo } from '../features/todo/todoSlice'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removeTodo } from "../features/todo/todoSlice";
 
 function Todos() {
   // todos ki value laana hai
-  const todos = useSelector(state=>state.todos) // state ki andar se value nikaal sakte hai(name field me value hai), todoslice
-  const dispatch = useDispatch()
+  const todos = useSelector((state) => state.todos); // state ki andar se value nikaal sakte hai(name field me value hai), todoslice
+  const dispatch = useDispatch();
   return (
     <>
-    <div className="text-4xl font-semibold">Todos</div>
-    <ul className="list-none">
+      <div className="text-4xl font-semibold">Todos</div>
+      <ul className="list-none">
         {todos.map((todo) => (
           <li
             className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
             key={todo.id}
           >
-            <div className='text-white'>{todo.text}</div>
+            <div className="text-white">{todo.text}</div>
             {/* // jab koi method paas karna ho toh jadatar callback hi use karte hai agar parenthesis laga denge to directly execute ho jayega 
             but i want ki koi click kare tab hi execute ho that's why */}
             <button
-             onClick={() => dispatch(removeTodo(todo.id))}
+              onClick={() => dispatch(removeTodo(todo.id))}
               className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
             >
               <svg
@@ -41,7 +41,7 @@ function Todos() {
         ))}
       </ul>
     </>
-  )
+  );
 }
 
-export default Todos
+export default Todos;

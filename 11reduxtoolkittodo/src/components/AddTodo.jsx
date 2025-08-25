@@ -1,17 +1,16 @@
-import React,{useState} from 'react'
-import {useDispatch} from 'react-redux'
-import { addTodo } from '../features/todo/todoSlice'
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../features/todo/todoSlice";
 
 function AddTodo() {
-
-  const [input,setInput]=useState('')
-  const dispatch = useDispatch()
+  const [input, setInput] = useState("");
+  const dispatch = useDispatch();
   //Dispatch reducer ko use kar ke store me value change karta hai
-  const addTodoHandler = (e) =>{
-    e.preventDefault()
-    dispatch(addTodo(input))
-    setInput('') // Because we want ki jab form fill ho kar submit ho jaye to input field clean ho jaye that's why we pass empty string
-  }
+  const addTodoHandler = (e) => {
+    e.preventDefault();
+    dispatch(addTodo(input));
+    setInput(""); // Because we want ki jab form fill ho kar submit ho jaye to input field clean ho jaye that's why we pass empty string
+  };
 
   return (
     <form onSubmit={addTodoHandler} className="space-x-3 mt-12">
@@ -29,7 +28,7 @@ function AddTodo() {
         Add Todo
       </button>
     </form>
-  )
+  );
 }
 
-export default AddTodo
+export default AddTodo;
