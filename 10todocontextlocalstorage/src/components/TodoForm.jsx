@@ -1,37 +1,39 @@
-import React,{useState} from 'react'
-import { useTodo } from '../context';
+import React, { useState } from "react";
+import { useTodo } from "../context";
 
 function TodoForm() {
-    
-    const [todo,setTodo] =useState("")
-    const {addTodo}= useTodo()
+  const [todo, setTodo] = useState(""); // local state for input field
+  const { addTodo } = useTodo(); // getting addTodo function from context
 
-    const add = (e)=>{
-        e.preventDefault()
-        if(!todo) return 
+  const add = (e) => {
+    e.preventDefault();
+    if (!todo) return;
 
-        // addTodo({id:Date.now() , todo:todo, completed:false}) if you are using this syntax
-        // then you have to updaate you app.js like that -> setTodos((prev)=>[{...todo},...prev])
+    // addTodo({id:Date.now() , todo:todo, completed:false}) if you are using this syntax
+    // then you have to updaate you app.js like that -> setTodos((prev)=>[{...todo},...prev])
 
-        // best way 
-        addTodo({todo,completed:false})
-        setTodo("")
-    }
+    // best way
+    addTodo({ todo, completed: false }); // adding new todo with completed false
+    setTodo(""); // clear input field after adding
+  };
 
-    return (
-        <form onSubmit={add}  className="flex">
-            <input
-                type="text"
-                placeholder="Write Todo..."
-                className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
-                value={todo}
-                onChange={(e)=>setTodo(e.target.value)}
-            />
-            <button type="submit" className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0">
-                Add
-            </button>
-        </form>
-    );
+  return (
+    <form onSubmit={add} className="flex">
+      <input
+        type="text"
+        placeholder="Write Todo..."
+        className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
+        value={todo} // binding input value to state
+        onChange={(e) => setTodo(e.target.value)} // updating state on input change
+      />
+      <button
+        type="submit"
+        className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0"
+      >
+        Add
+      </button>
+    </form>
+  );
 }
 
 export default TodoForm;
