@@ -4,8 +4,10 @@ import { removeTodo } from "../features/todo/todoSlice";
 
 function Todos() {
   // todos ki value laana hai
+  // useSelector ek hook hai jo hume Redux store ki state ko access karne deta hai
+  // ye ek function leta hai jisme hum state ko argument ke roop me lete hai aur return karte hai jo bhi hume chahiye
   const todos = useSelector((state) => state.todos); // state ki andar se value nikaal sakte hai(name field me value hai), todoslice
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // ye hook hume dispatch function deta hai jisse hum actions ko dispatch kar sakte hai store me
   return (
     <>
       <div className="text-4xl font-semibold">Todos</div>
@@ -17,7 +19,7 @@ function Todos() {
           >
             <div className="text-white">{todo.text}</div>
             {/* // jab koi method paas karna ho toh jadatar callback hi use karte hai agar parenthesis laga denge to directly execute ho jayega 
-            but i want ki koi click kare tab hi execute ho that's why */}
+            but i want ki koi click kare tab hi execute ho that's why we use callback*/}
             <button
               onClick={() => dispatch(removeTodo(todo.id))}
               className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"

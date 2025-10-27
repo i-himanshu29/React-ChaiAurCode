@@ -4,11 +4,11 @@ import { addTodo } from "../features/todo/todoSlice";
 
 function AddTodo() {
   const [input, setInput] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); //useDispatch hook ko use kar ke hum action dispatch kar sakte hai store me
   //Dispatch reducer ko use kar ke store me value change karta hai
-  const addTodoHandler = (e) => {
-    e.preventDefault();
-    dispatch(addTodo(input));
+  const addTodoHandler = (e) => { //ye function form submit hone par call hoga and e event object hai
+    e.preventDefault(); //ye default behavior ko roakta hai form ka jo page ko reload kar deta hai
+    dispatch(addTodo(input)); // Dispatching the addTodo action with input as payload
     setInput(""); // Because we want ki jab form fill ho kar submit ho jaye to input field clean ho jaye that's why we pass empty string
   };
 

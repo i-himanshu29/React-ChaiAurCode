@@ -2,6 +2,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 //state hai
 const initialState = {
+  // yaha humne initial state banaya hai
   todos: [{ id: 1, text: "Hello world" }],
 };
 
@@ -9,6 +10,7 @@ const initialState = {
 //     console.log("hello")
 // }
 
+// createSlice ek method hai jo slice banata hai jo reducer aur actions ko manage karta hai
 export const todoSlice = createSlice({
   // createSlice ek method hai
   name: "todo",
@@ -17,14 +19,17 @@ export const todoSlice = createSlice({
     // isme properties aur function aate hai
     addTodo: (state, action) => {
       //properties ke andar always use state and action
+      // action-> object hai jisme payload hota hai
+      // payload-> jo data hum action ke through bhejte hai
+      // state-> current state of the slice
       const todo = {
         id: nanoid(), //Date.now() bhi use kar sakte the
         text: action.payload, //payload->object hai - id , email aa sakta hai
       };
-      state.todos.push(todo);
+      state.todos.push(todo); // mutating state directly is allowed in Redux Toolkit
     },
     removeTodo: (state, action) => {
-      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload); //payload me id aayegi , filter se remove karenge
     },
 
     //update HW ..do it

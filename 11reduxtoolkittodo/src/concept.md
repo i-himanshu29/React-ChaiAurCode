@@ -9,7 +9,7 @@ It manages the data flow.
 It is independent library.
 Better version of flux.
 Single source of truth(SSOT) means ek hi store hona chahiye.
-It should be read only. You should modify/mutate your state.
+It should be read only. You should never modify/mutate your state.
 
 Store me changes functon ke through hona chahiye, directly nhi hona chahiye or we say 'reducer'.
 Functionality reducer ke through hi jaani chahiye.
